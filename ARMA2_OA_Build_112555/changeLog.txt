@@ -1,0 +1,343 @@
+(current patch candidate)
+
+   [112156]  Update: squad.xml stuff limited to 250 kBytes
+   [111952]  New: squad.xml stuff limited to 50 kBytes
+   [111941]  New: Commandline swich -nologs
+   [111759]  Fixed: Reduced bandwidth usage in MP.
+   [108074]  Fixed: Patch installation problems on Windows XP
+   [104648]  Fix: Initialization of backpack in vehicles in MP
+   [103718]  Fixed: AI no longer fires on targets it does not see, only is reported by other group members.
+   [102678]  Fixed: switchWeapon action broken (https://dev-heaven.net/issues/71136)
+   [102493]  Fixed: execFSM/doFSM/commandFSM causes crash with non fsm file
+   [102469]  Fixed: initAmbientLife causes a crash (https://dev-heaven.net/issues/71001)
+   [102440]  Fixed: Smooth camera could sometimes jump very far briefly (caused crash https://dev-heaven.net/issues/32444)
+   [102106]  Fixed: Joystick state reset on start
+   [102082]  Fixed: gearSlotData causes crash when no valid control is given (https://dev-heaven.net/issues/70912)
+   [101333]  A new mission.sqm unit value forceHeadlessClient used to mark a role reserved for a HC (https://dev-heaven.net/issues/67648)
+   [101141]  Fixed: Scripting functions aimPos, eyePos, eyeDirection fixed for a crew (https://dev-heaven.net/issues/38606#change-152548)
+   [101032]  New: Scripting function hasInterface to allow detecting a headless client or a dedicated server.
+   [100540]  Fixed: Users connecting with blocked CD keys were sometimes shown "You are banned" message instead of "Bad CD Key".
+   [100296]  Fixed: MP: Player head movement using numpad keys was not visible to other players.
+   [100257]  Fixed: ballisticsComputer uses wrong velocity (https://dev-heaven.net/issues/6823)
+   [99685]  Changed: Default settings changed to requiredSecureId=1 (http://www.bistudio.com/english/company/developers-blog/344-secure-player-id-introduced)
+   [99408]  Changed: AI network objects now fully initialized before running init scripts (to fix https://dev-heaven.net/issues/64708)
+   [99331]  Fixed: artillery computer is not affected by zeroing
+   [99184]  New: server.cfg can use localClient[]={127.0.0.1}; to indicate clients with unlimited bandwidth (https://dev-heaven.net/issues/62500)
+   [99112]  Optimized: Servers with many players (>20) should run faster.
+   [99013]  Changed: Max. number of concurrent players on a hosted server increased to 16 (was 8 until now).
+   [98939]  Fixed: Linux Date format wrong (https://dev-heaven.net/issues/17313)
+   [98866]  Fixed: duplicated items in dead bodies (https://dev-heaven.net/issues/54384)
+   [98342]  Fixed: AI did not enter some corner covers at all, or entered it from a wrong direction
+   [98219]  Improved: AI now smarter when selecting attack position, it should no more plan attacks from very close (https://dev-heaven.net/issues/32115)
+   [98137]  Changed: AI soldiers now glancing at their targets more frequently while moving in combat.
+   [98135]  Fixed: AI sometimes running back and forth when attacking (https://dev-heaven.net/issues/32115)
+   [98088]  Improved: AI AT units selecting better position when attacking (https://dev-heaven.net/issues/32115)
+   [98041]  Fixed: Server crash when trying to delete remote non player group AI on a client (https://dev-heaven.net/issues/54014)
+   [98020]  Fixed: Fast missiles not visible (https://dev-heaven.net/issues/52489)
+   [97990]  Improved: Rendering distance of the airborne helicopter is now the same as of the airborne plane (https://dev-heaven.net/issues/27584)
+   [97982]  Improved: When engaging a vehicle with multiple vulnerable crew members, the most suitable one is selected now.
+   [97970]  Fixed: AI sometimes unable target the crew or large vehicles, esp. helicopters (https://dev-heaven.net/issues/27547)
+   [97930]  Fixed: Multiple crashes during client/server shutdown
+   [97926]  Changed: Scripting: When a global variable is assigned a nil value, it is now deleted (was kept with a nil value).
+   [97917]  New: Scripting function "onEachFrame code" defines a code called each frame.
+   [97328]  Fixed: Server was not notified when client closed the game (alt+F4)
+   [97299]  Changed: callExtension return buffer size increased to 16 KB.
+   [97106]  Changed: copyFromClipboard now does nothing in MP, copyToClipboard does nothing in MP on clients.
+   [97105]  New: Added scripting functions profileNamespace and saveProfileNamespace.
+   [96888]  New: New MP bandwidth control algorithm available through commandline option -bandwidthAlg=2
+   [96866]  Fixed: Possible crash when client session is terminated during VOIP speaking.
+   [96815]  Fixed: Game has often crashed while shutting down during speaking over VOIP.
+   [96798]  Changed: When there any too many servers (>500) available matching the current filter, server browser shows close servers only.
+   [96755]  Changed: Isolated unofficial DayZ variants (like Lingor) into a separate mission type to prevent Arma server browser pollution.
+   [96643]  New .cfg entries serverGeoLocAuto / serverLongitude / serverLatitude can be used to set approximate server location manually.
+   [96493]  Fixed: MP - Gunner firing broken (blank ammo) when human pilot activates manual fire before the human gunner enters.
+   [96488]  Fixed: Deactivated satchel charge not picked up even if you had 2 empty slots
+   [96476]  Fixed: Kamov was unable to engage with rockets
+   [95939]  Fixed: Vehicle interior sometimes disappearing briefly.
+   [95862]  Improved: Server browser now prefers "better" (connectable) servers.
+   [95783]  Fixed: Some sounds (esp. say) queued if played out of hearing range.
+   [95691]  Changed: buildRequired is now limited by the server version, server can never require a higher version than its own.
+   [95654]  Improved: VoN now uses the same port as the game traffic, should make VoN more reliable (less NAT issues).
+   [95406]  Improved: Servers can set vonCodecQuality 11..20 for improved quality (wideband). Ultrawideband 21..30 will be possible in 1.63. The new setting requires a recent client on the talking side, server and listening clients can be any version.
+   [95309]  Changed: MP: Dayz servers are now visible if and only if the Dayz mod is active.
+   [95308]  Improved: MP: Custom game types no longer displayed as Unknown in the server browser.
+   [95307]  Changed: Default matchmaking filter now shows only servers with ping < 100.
+   [95285]  Fixed: Possible crashes after closing the game in MP (Alt+F4)
+   [94918]  New: command unit addMagazine[name, ammoCount]
+   [94912]  Fixed: Video memory detection on W7/x64 sometimes wrong because of bug in IDirect3DDevice9::GetAvailableTextureMem.
+   [94886]  Fixed: Possible gear item duplication (private https://dev-heaven.net/issues/36648)
+   [94761]  TBB 4.0 update 5, (tbb40_20120613oss, http://threadingbuildingblocks.org/ver.php?fid=187)
+   [94699]  Tweak Reinhard tonemapping pars
+   [94629]  Fixed: Wrong magazines are removed with weapon in briefing gear.
+   [94206]  Fixed: Disabled channels can be bypassed in briefing screen (https://dev-heaven.net/issues/33906)
+   [94049]  New: terrainIntersectASL command
+   [94049]  Fixed: terrainIntersect reverted to ATL
+   [94002]  Fixed: PlayerId changed for users using Reinforcements or Arma X Anniversary edition to prevent PlayerId conflicts.
+   [94001]  Fixed: "enableItemsDropping = 0;"  now even for MP clients
+   [94001]  New: moonIntensity command
+   [94001]  New: sunOrMoon command
+   [93989]  Changed: When dropping weapon unrelated magazine will not be dropped
+   [93958]  New: Dropping items while swimming can be disabled with "enableItemsDropping = 0;" in description.ext
+   [93945]  New: In gear added bars with ammo count
+   [93945]  New: setGearSlotAmmoCount, setIDCAmmoCount, gearIDCAmmoCount, gearSlotAmmoCount gear commands
+   [93897]  New: AToC & PPAA added into UI video options
+   [93841]  Fixed: AI using NVGs as binoculars after dropping their primary weapon (https://dev-heaven.net/issues/27297)
+   [93821]  Changed: Authentication Timeout is distinguished from bad CD key
+   [93812]  Fixed: Restrict gamma value set by profile
+   [93809]  Fixed: Restrict brightness value set by profile
+   [93722]  Fixed: Effects of setDamage to buildings different on clients and server (https://dev-heaven.net/issues/23915#change-136685)
+   [93701]  Fixed: Changing gear in briefing screen is not working reliable in MP (https://dev-heaven.net/issues/16421)
+   [93680]  Optimized: MP: attachTo no longer sends a message when the attachment does not change.
+   [93672]  Fixed: Unable to access AI soldier's gear in map
+   [93670]  Fixed: Prone units stop engaging (https://dev-heaven.net/issues/32475)
+   [93664]  Fixed: Damage of buildings synchronization in MP after JIP (https://dev-heaven.net/issues/25659, https://dev-heaven.net/issues/23915, https://dev-heaven.net/issues/18492)
+   [93657]  Fixed: Target is no longer stored in the long-term target list when forgotten for the second time (https://dev-heaven.net/issues/27895)
+   [93654]  Improved: Tone mapping
+   [93652]  New: Scripting functions visiblePositionASL and nearestBuilding position
+   [93648]  New: Scripting functions ASLToATL and ATLToASL to convert between coordinate systems.
+   [93632]  New: Lazy evaluation variants of scripting functions and / or.
+   [93624]  Changed: Scripting function weaponDirection returns a primary weapon direction when empty string is used as a weapon name.
+   [93622]  New: Scripting function eyeDirection.
+   [93598]  New: Scripting functions eyePos object and aimPos object
+   [93585]  Improved: Reduced LOD flicker when zooming / panning zoomed (https://dev-heaven.net/issues/16004#note-23)
+   [93583]  Fixed: Player-created markers not synchronised with JIP clients (see https://dev-heaven.net/issues/6337)
+   [93575] Fixed: StringLoad command reads unicode
+   [93570]  Fixed: Player-made map markers disappearing in MP under certain circumstances (https://dev-heaven.net/issues/32160)
+   [93542]  New: MP Statistics screen (key I) contains the Server hostname
+   [93528]  Fixed: Max distance for DirectChat raised from 20m to 40m
+   [93415]  Fixed: empty weaponHolder is not deleted when used by remote player
+   [93398]  New: System chat like player connected/disconnected switched to CCSystem=6 channel. New configuration opportunity disableChannels[]={chan1,chan2,...}; in mission description.ext file possible.
+   [93294]  Fixed: Multiple Object not found problems such as Server: Object 6:4 not found (message 124)
+   [93276]  New: terrainIntersect command
+   [93273]  New: lineIntersects, lineIntersectsWith commands
+   [93156]  Changed: increased gear MP messages priority
+   [93146]  Fixed: LOD blending
+   [93120]  Fixed: JIP connecting players less affect other players network bandwith
+   [93117]  Fix: Crash: https://dev-heaven.net/issues/31784 - caused by fix: "LOD blending not working reliably (rev. 93017)
+   [93017]  Fixed: LOD blending not working reliably
+   [92956]  Fixed: Sound: Music often stop playing after window focus is lost and regained
+   [92925]  Fixed: switching backpack with dead unit in MP
+   [92821]  Fixed: Joining unit in the vehicle to a different side group did not change the perceived side of the unit.
+   [92781]  Fixed: SelectPlayer makes direct communication unreliable (see https://dev-heaven.net/issues/30991)
+   [92754]  Fixed: scaling icons with grenade cursor
+   [92706]  TBB 4.0 update 4, (tbb40_20120408oss, http://threadingbuildingblocks.org/ver.php?fid=185)
+   [92705]  Fixed: Possible crash when in out of VRAM conditions because of a race condition.
+   [92679]  Fixed: A Javelin missile often did not lock a target when playing with a Veteran or harder difficulty (https://dev-heaven.net/issues/28865)
+   [92612]  Fixed: SelectPlayer in MP can break the Direct Chat or cause other MP issues.
+   [92582]  Fixed: AI detection after load
+   [92463]  Fixed: AToC ATi 77xx
+   [92071]  Changed: Observer RPT messages now once per 60 sec, https://dev-heaven.net/issues/29985
+   [92061]  Fixed: AtoC on nVidia for CSAA
+   [92059]  PPAA pars tweak & SMAA use color edge detection method
+   [91173]  New: Registry driven mod can contain list of required mods in its REQUIRE string value (the same syntax as for LOADAFTER). Moreover, the reg.value CANDISABLE="0" can be used to make the Disable button disabled.
+   [91055]  Fixed: Respawn with backpack
+   [90909]  Fixed: crash of Linux server when player with custom face connects
+   [90901]  New: setUnitRecoilCoefficient command
+   [90099]  New: Added MP only scripting functions netId / objectFromNetId / groupFromNetId.
+   [89964]  Fixed: Linux servers were never green in server list.
+   [89899]  Fixed: Helicopter is more accurate with unguided rockets
+   [89898]  Fixed: Secondary gunner tracks enemies
+   [89603]  Fixed: A possible crash when textures were loading too slow from the disk.
+   [89523]  Fixed: Crash during engine termination from multiplayer game.
+   [89361]  Fixed: Linux server slow startup
+   [89205]  New: Player can look up/down using a mouse while driving land/water vehicles.
+   [89201]  New: SMAA antialiasing introduced, use PPAA=3, PPAALevel=0..3 in Arma2OA.cfg.
+   [89104]  New: Implemented automatic looking intro turns when driving a car with a mouse.
+   [89086]  Experimental: A different way to handle mouse steering is implemented for cars, tanks, boats and bikes.
+   [89079]  Fixed: Multiple reload sounds in mp (see https://dev-heaven.net/issues/28201)
+   [89011]  New: A cursor is shown to provide a visual feedback when steering a car.
+   [88975]  Fixed: Multiple reload sounds in MP (see https://dev-heaven.net/issues/28201)
+   [88948]  Improved: Airplane thrust and brakes can now be applied at the same time.
+   [88947]  New: Full joystick axis can be mapped by mapping both positive and negative part of the same axis (map negative first to use the axis inverted) (https://dev-heaven.net/issues/3546)
+   [88918]  Improved: AI scanning for the target more when a visual contact is lost.
+   [88890]  Improved: AI vehicles scanning area with their weapons when target position is not known exactly.
+   [88870]  Fixed: AI vehicles sometimes see player outside their field of view (https://dev-heaven.net/issues/28203)
+   [88850]  Fixed: AI was sometimes able to reveal a unit which has detonated a satchel (https://dev-heaven.net/issues/11610)
+   [88726]  Fixed: Frequent client/server crashes in MP (when merging multipacket messages)
+   [88269]  Changed: Application name changed to "ArmA 2 OA" for "ArmA 2 Reinforcements".
+   [88195]  Improved: -beta mods now always loaded first (https://dev-heaven.net/issues/27762)
+   [88147]  Add: Optional FXAA sharp filter, *.cfg "FXAASharp"
+   [88119]  Improved: AI spotting reducing in high speed moving vehicles more accurate now (movement direction is considered).
+   [88111]  Fixed: Unguided rockets no longer explode when passed by the target (https://dev-heaven.net/issues/27772)
+   [88110]  Fixed: AI gunner hits the ground with manually guided missile when "Auto guided AT"  is disabled (https://dev-heaven.net/issues/14297)
+   [88015]  Fixed: Aircraft gunner firing even when manual fire was selected by a pilot (https://dev-heaven.net/issues/27689)
+   [87963]  Optimized: Reduced memory footprint in complex missions.
+   [87840]  New: Added scripting command productVersion (https://dev-heaven.net/issues/25580)
+   [87837]  Changed: Addons config value requiredVersion ignored for easier addon sharing between various products (A2, TOH).
+   [87824]  Changed: Removed support for config parameter nightVision (https://dev-heaven.net/issues/26117)
+   [87768]  Fixed: AI vehicles crews seeing targets badly (https://dev-heaven.net/issues/23388)
+   [87755]  Fixed: Player automatically reveals targets which AI would never see (https://dev-heaven.net/issues/27493)
+   [87746]  Fixed: Looking around no longer possible when combat mode changes in vehicle (https://dev-heaven.net/issues/17777)
+   [87745]  New: Cheat Shift+Minus+FPS to allow artificially limit FPS for testing to 40,20,10,5.
+   [87740]  Improved: Targeting and firing always commanded by observer. (http://dev-heaven.net/issues/2353)
+   [87706]  Improved: AI laser target detection at large distances improved.
+   [87692]  Fixed: Manual guidance not working for a helicopter gunner (http://dev-heaven.net/issues/12025, http://dev-heaven.net/issues/27418)
+   [87659]  Fixed: AI was unable to engage invisible laser targets used for SSM (http://dev-heaven.net/issues/26317)
+   [87658]  Fixed: Command doTarget on friendly unit did not work (http://dev-heaven.net/issues/22724)
+   [87655]  Fixed: Text parameter file parsing not reliable (http://dev-heaven.net/issues/27403)
+   [87654]  Improved: A behaviour of the leader player is now assumed to be the most restrictive behaviour of his subordinates (http://dev-heaven.net/issues/11699)
+   [87652]  Fixed: AI always turned out when player is effective commander in cargo (http://dev-heaven.net/issues/2733)
+   [87646]  Fixed: MP: Bullet hits of remote units not visible over large distance (http://dev-heaven.net/issues/12973)
+   [87645]  Changed: Default memory allocator is now tbb4malloc_bi instead of tbb3malloc_bi
+   [87644]  Fixed: Bad format of startDate / startTime fields could cause crazy time preset in the editor (http://dev-heaven.net/issues/27338)
+   [87643]  Fixed: Manually guided missiles lost control when reaching 1500 m distance (http://dev-heaven.net/issues/12101)
+   [87640]  New: RVExtension dll interface implemented (http://community.bistudio.com/wiki/callExtension)
+   [87640]  Improved: AI sometimes did not start firing at enemy which passed quickly just in front of it. Fixed: AI unable to target crew in vehicles other than tracked ones (http://dev-heaven.net/issues/25847) Improved: AI units now give more preference to close targets (http://dev-heaven.net/issues/25847)
+   [87497]  Changed: Default maxPacketSize reduced from 1490 to 1400 to improve compatibility with exotic MTU settings (http://dev-heaven.net/issues/9719)
+   [87496]  Fixed: Player state transferred corrently even for distant players (http://dev-heaven.net/issues/27200)
+   [87495]  New: -malloc=system can be used to force using Windows allocator even when allocator dlls are present.
+   [87410]  Fixed: Missing reloading sound while reloading animation from another player in Multiplayer (http://dev-heaven.net/issues/18754)
+   [87357]  Fixed: Failed to load TextureHeaderManager from file on Linux servers
+   [87274]  Improved: Airborne airplanes now rendered in larger distances.
+   [87273]  Changed: AI airplane always using lights during landing, taxiing and takeoff.
+   [87270]  Fixed: Lens flares positioned badly when 3D resolution different from 2D resolution.
+   [87077]  New: Ground effect computed for airplanes (0-10% depending on height)
+   [87075]  New: Ground effect computed for helicopters (based on http://www.cybercom.net/~copters/aero/ground_effect.html)
+   [87073]  Fixed: Helicopter autohover was wobbling a lot (http://dev-heaven.net/issues/4478)
+   [87067]  New: Commandline -checkSignatures to provide thorough test of all signatures of all loaded banks at the start game. Output is in rpt file.
+   [86971]  New: -beta=xxxx as alternative to -mod=xxxx to allow using beta files without affecting mod handling.
+   [86965]  Changed: Mod list configured by ModLauncher is saved inside game config instead of user profile.
+   [86944]  Added: HitPart event now contains Ammo type name
+   [86925]  Fixed: CWR2 Camel was unable to takeoff (flew close to stall after take off, never recovering).
+   [86916]  New: Player name validation when editing a profile name.
+   [86882]  New: Scripting command visiblePosition to obtain object position as visible on screen (http://dev-heaven.net/issues/26591)
+   [86880]  Fixed: Helicopter slow after GET OUT waypoint when CYCLE was used as well.
+   [86876]  New: Editor: Visual indication of the selected target for CYCLE waypoint.
+   [86851]  Fixed: Vehicles attached on ships attached to objects sometimes destroyed (http://dev-heaven.net/issues/26668)
+   [86839]  Fixed: Cannot manipulate doors after game was aborted with doors in transit. (http://dev-heaven.net/issues/26702)
+   [86737]  New: Fast Approximate Anti-Aliasing (FXAA), http://community.bistudio.com/wiki/arma2oa.cfg
+   [86704]  Fixed: "Direct" chat sometimes not working (http://dev-heaven.net/issues/26422)
+   [86702]  Fixed: Dead body temperature was not saved (http://dev-heaven.net/issues/25466)
+   [86647]  MP: Fixed: When a player was JIP-ing, traffic for all other players was significantly reduced (http://dev-heaven.net/issues/26408#note-48)
+   [86643]  Fixed: Massive network traffic optimization during Join in Progress (http://dev-heaven.net/issues/26408#note-48)
+   [86620]  Fixed: Searchlight turning itself off for non-server clients (http://dev-heaven.net/issues/4449)
+   [86566]  Fixed: Action taking magazine from a backback has sometimes failed (http://dev-heaven.net/issues/25927)
+   [86520]  Fixed: Gamespy Server signature list contains often twice "bi" (http://dev-heaven.net/issues/23752)
+   [86491]  Improved: MP: Diary statistics not available in MP when NetStats is disabled (http://dev-heaven.net/issues/26435)
+   [86484]  Improved: Dedicated server console now supporting Unicode and long output (using Rich Edit Control).
+   [86431]  Fixed: Issues with v2 signatures - causing random check to fail (http://dev-heaven.net/issues/26323)
+   [86296]  Changed: AI gunner is no longer firing at friendly units when ordered to target them.
+   [86271]  Fixed: Locked MP role slots after BattlEye kick.
+   [86257]  Fixed: MP: Countermeasures released automatically for a player commanded tank (http://dev-heaven.net/issues/17458) Fixed: MP: Countermeasures released by AI were multipled by the number of other connected players.
+   [86233]  Fixed: MP: Loosing gear due to water no longer multiplied for each player (http://dev-heaven.net/issues/26162)
+   [86217]  Improved: Thermal imaging for models with no TI data (http://dev-heaven.net/issues/16673)
+   [86159]  Fixed: Server response unreliable with long keys (e.g. mod lists) (http://dev-heaven.net/issues/23389)
+   [86128]  Fixed: Soldier running instead of crawling through holes (http://dev-heaven.net/issues/25348)
+   [86122]  Fixed: AI without weapon stuck when crouched (http://dev-heaven.net/issues/16229)
+   [86114]  Prevent crouched AI from sprinting (http://dev-heaven.net/issues/24405)
+   [86060]  New: A command line argument -par=filename can be specified to provide a parameter file (http://dev-heaven.net/issues/26103)
+   [86059]  New: Window title includes player name when running windowed to make testing with multiple instances easier.
+   [86035]  Fixed: Tanks were not damaged under water when fps was very high (http://dev-heaven.net/issues/25835)
+   [85998]  Improved: Improved AI/autopilot landing abilities (http://dev-heaven.net/issues/25419)
+   [85882]  Fixed: Trigger "Detected by" sometimes did not fire when unit was only known about indirectly, e.g. because of a kill (http://dev-heaven.net/issues/25768)
+   [85881]  Fixed: AI sometimes has forgotten a recently seen kill (http://dev-heaven.net/issues/25768) (result of http://dev-heaven.net/issues/2067#note-12)
+   [85871]  New: Custom memory allocator support (http://community.bistudio.com/wiki/ArmA_2:_Custom_Memory_Allocator)
+   [85823]  Fixed: Shadows were not cast on on-surface objects, like helipads.
+   [85747]  Changed: attachTo with the same object no longer resets attached object orientation (http://dev-heaven.net/issues/25272)
+   [85746]  Fixed: There was no debriefing after MP game ends after saving the game.
+   [85741]  Fixed: MP: Bullet tracers of remote vehicles not reliable (http://dev-heaven.net/issues/25601).
+   [85737]  Fixed: SaveVar did not work in MP Campaign.
+   [85653]  New: Scripting command reveal has a new variant, group reveal [target, accuracy]. To reveal target side use 1.5 (default reveal used accuracy=1).
+   [85595]  Fixed: Crash or game corruption when loading a game with clients already connected (http://dev-heaven.net/issues/24676)
+   [85594]  New: Server admin can check build numbers of clients using #userlist.
+   [85588]  Fixed: magazinesTurret [-1] sometimes returning wrong list or even crashing.
+   [85533]  Changed: MP: BLUFOR roles are now assigned before OPFOR by default.
+   [85529]  Fixed: Reassign allowed clients to use a role reserved for a host.
+   [85520]  Optimized: Faster preload in multiplayer ("Receiving" mission, switching from map).
+   [85497]  Fixed: Remote units init event handle is no longer run before fully initialized (http://dev-heaven.net/issues/25225)
+   [85489]  Changed: Init handlers executed immediately, not queued for later execution like other events.
+   [85488]  Changed: MP: Units are no longer moved to a new group when they timeout getin (http://dev-heaven.net/issues/25095#note-75)
+   [85448]  Fixed: Scripting command "Reveal" left target side as unknown, requiring visual confirmation (http://dev-heaven.net/issues/25266#note-8)
+   [85440]  Fixed: Bullets damage reduced too much over distance (http://dev-heaven.net/issues/11479)
+   [85429]  Fixed: Global event handlers (including onPlayerDisconnected and onMapSingleClick) cleaned when MP debriefing starts (http://dev-heaven.net/issues/16261)
+   [85428]  New: Window title includes Host or Admin status when running windowed to make testing with multiple instances easier.
+   [85424]  Fixed: in config parameter initTurn in turrets work again
+   [85420]  Improved: Direct damage is no longer artificaly reduced for lying soldiers (http://dev-heaven.net/issues/20441)
+   [85337]  Optimized: Unknown targets no longer saved, significantly reducing savegame size.
+   [85330]  Optimized: No longer saving "visionPars" and "magazineSlotsOpticsModes" when not used.
+   [85300]  Fixed: Group names were not reused after deleteGroup (http://dev-heaven.net/issues/11483)
+   [85280]  Improved: AI smarter in using binoculars.
+   [85244]  Fixed: Objects close to bushes or trees sometimes ignored during visibility testing (http://dev-heaven.net/issues/25230)
+   [85199]  Fixed: Order of init event handlers and init commands was reversed since 1.57 beta (http://dev-heaven.net/issues/14766)
+   [85032]  Fixed: script command FOR (BASIC) can use capital characters in variable
+   [84977]  Optimized: MP: Improved server performance in complex missions.
+   [84957]  Optimized: MP: Reduced number of messages send during JIP to complex missions.
+   [84874]  Fixed: Slight cursor offset when selecting items in the listboxes (like mission selection).
+   [84871]  Improved: MP: Smoother motion of distant units (Default value of MinErrorToSend changed to 0.001, introduced new value MinErrorToSendNear with a default value of 0.01).
+   [84865]  Fixed: MP game crashed after loading a save from a complex mission (http://dev-heaven.net/issues/24676)
+   [84692]  Fixed: AI was often not watching unidentified targets (causing http://dev-heaven.net/issues/24631)
+   [84632]  Fixed: turret tug after crew turn-in
+   [84478]  Improved: loading of binarized bikb files now supported.
+   [84464]  Improved: MP: Remote units should move a lot smoother.
+   [84453]  Fixed: DisableSerialization breaks spawn script variables after Load.
+   [84388]  New: New entry requiredBuild=xxxxx; in server.cfg preventing obsolete clients to connect. Not reliable until 1.60, clients are still able to connect.
+   [84374]  Optimized: MP: Reduced bandwidth used by standing AI soldiers.
+   [84285]  Fixed: MP: Remote units jumping back when stopping (http://dev-heaven.net/issues/24034)
+   [84271]  Fixed: MP: Reduced bandwith usage in missions with many soldiers.
+   [84266]  Improved: Better error message shown when memory allocation fails because of too small page file.
+   [84265]  Improved: Abnormal program termination by an error message is now more robust, less likely to cause a bogus crash report or to miss the message box.
+   [84259]  Fixed: Weapons on pylons changed positions after fireAtTarget (http://dev-heaven.net/issues/24046)
+   [84221]  Fixed: Tanks sometimes braking too much or even reversing a bit when slowing down.
+   [84209]  Fixed: AI subordinates sometimes slowing down too much when navigating around obstacles.
+   [84057]  Fixed: Possible crash after calling joinSilent and deleteVehicle.
+   [83810]  Fixed: Rare problem of AI fleeing when all enemies mounted vehicles.
+   [83759]  Fixed: AI not engagign through glass and other penetrable surfaces (http://dev-heaven.net/issues/4438).
+   [83726]  Fixed: Lipsync for radio not working.
+   [83721]  Fixed: AI no longer seeing through dense grass (http://dev-heaven.net/issues/5785)
+   [83597]  Fixed: Attached objects no longer causing slow car movement.
+   [83544]  Improved: AI skill settings in difficulty options easier to use.
+   [83530]  Improved: Soldier movement more natural when doing "scan horizon".
+   [83496]  Changed: Danger FSM event DCFire is now sent only when unit not in the combat mode yet (http://dev-heaven.net/issues/23160)
+   [83471]  Fixed: AI units often not engaging close enemies (http://dev-heaven.net/issues/18951, http://dev-heaven.net/issues/22935)
+   [83400]  New: scripting function "assignedTeam xxx" returns colored team to which a commander of given vehicle belongs to.
+   [83390]  Fixed: Most units had maximum skill, ignoring values set in the mission (http://dev-heaven.net/issues/4483)
+   [83310]  Fixed: More space for GameSpy QR2 signature key answer.
+   [83308]  Fixed: low game fps causing innacurate AI weapon aiming (see also http://dev-heaven.net/issues/22974)
+   [83273]  Changed: Temporarily abandoned vehicles are no longer considered neutral (AI continues engaging them).
+   [83258]  Fixed: tugging tracks on tanks
+   [83156]  Fixed: AI units no longer firing at empty enemy vehicles (http://dev-heaven.net/issues/5183)
+   [83137]  Fixed: Walking no longer causes prone-style recoil to be used. (http://dev-heaven.net/issues/22828)
+   [83122]  Fixed: AI no longer considering a car horn as a threat.
+   [83118]  Fixed: AI no longer using AA against ground targets or guided missiles against soft targets unless desperate (http://dev-heaven.net/issues/7578)
+   [83101]  Improved: Engage / Fire no longer a default command when not pointing to an enemy target.
+   [83100]  Fixed: Enemy fire no longer reported by units which cannot be aware of it.
+   [83088]  Fixed: Units equipped with NVG no longer turn on the flashlights on their own (http://dev-heaven.net/issues/13041)
+   [83085]  Fixed: setMimic working, acceptable mimics are: "neutral", "dead", "danger", "hurt", "aware", "safe", "combat" (http://dev-heaven.net/issues/6638)
+   [83077]  Improved: AI considering threats uphill from it a bit more when planning a path.
+   [83076]  Fixed: Object variable space was not cleared reset between missions (http://dev-heaven.net/issues/13620)
+   [83062]  Fixed: Sky sometimes changing abruptly (http://dev-heaven.net/issues/8072)
+   [82969]  Improved: AI is less able to detect enemies in forests (improved estimation on "disappearing in a pattern" for forests).
+   [82939]  Fixed: AI vehicles could spot previously known targets even out of their visual cone (http://dev-heaven.net/issues/18846)
+   [82928]  Fixed: Occasional visual artifacts caused by rabbit animation interpolation since 79670 (thanks to Sniperwolf572 and F2k Sel for finding the repro).
+   [82899]  Fixed: Signature checking of BAF/PMC addons.
+   [82874]  New: Command line option -nosound to run the game without accessing audio devices.
+   [82699]  Optimized: Some background file operations are faster, esp. with low fps (should fix http://dev-heaven.net/issues/22227)
+   [82654]  Optimized: Visual state interpolation fully enabled. (http://www.bistudio.com/index.php/english/company/developers-blog/230-experimental-betas-interpolating-the-future)
+   [82621]  Fixed: Weapons no leaving hands while turning when prone
+   [82590]  Fixed: Message "Creating debriefing" no longer appearing in the rpt file.
+   [82484]  Improved: AI helicopter attempt to land when hit during an attach run.
+   [82476]  Fixed: Crash opportunity when camera object was deleted.
+   [82464]  Improved: AI landing more reliable with broken back rotor.
+   [82451]  New: AI FSMs can be disabled using unit disableAI "FSM".
+   [82342]  Fixed: AI road vehicle avoidance improved.
+   [82295]  Fixed: PMC videos flashing (since 80298).
+   [82163]  Fixed: No longer display names of buildings hidden by accuracy (http://dev-heaven.net/issues/20503)
+   [82130]  Fixed: Occasional fps drop when AI was getting in a vehicle.
+   [82117]  Optimized: Much faster visibility testing when many units are around, esp. when they are not moving a lot.
+   [81995]  Fixed: AI planes were climing/diving wildly during formation flying.
+   [81956]  Improved: AI takeoff improved, L-39 or Su-34 can now lift from all Chernarus airfields.
+   [81286]  Fixed: Airplane control surfaces position could reach impossible values with keyboard controls (http://dev-heaven.net/issues/2314)
+   [80336]  Optimized: Reduced frame rate drops caused by texture loading (http://dev-heaven.net/issues/14397)
+   [79768]  New: Mods can be configured using Windows Registry.
+   [79670]  Fixed: AI warping at distance in singleplayer (http://dev-heaven.net/issues/1915)
+   [79645]  New: parameter "angle" for reflectors
+   [79509]  Fixed: Possible freeze after alt-tab in window mode.
+   [79500]  New: Helipads can be placed on a carrier deck and AI helicopter can land on them.
+   [79462]  Fixed: Airplane sometimes crashed after landing autopilot was activated.
+   [79441]  Fixed: Crash when assembling GMG, L2A1 crew served weapons.
+   [79432]  New: AI able to STOL on runways shorter than 500 m.
+   [79412]  Impoved: Aircraft can be placed on carrier deck in the editor.
+ 
+ 
+(changes in data)
+  fixed :[OA] SC 48 Sector Control is missing ammo for Mk17 EGLM RCO and Mk17 TWS SD
