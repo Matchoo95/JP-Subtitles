@@ -82,9 +82,7 @@
       }
 
       function goToFolder (item) {
-        const link = 'https://github.com/vdegenne/JP-Subtitles/tree/master/Ainori%20Love%20Wagon%20Asian%20Journey%20-%20%E3%81%82%E3%81%84%E3%81%AE%E3%82%8A%20Asian%20Journey/%E3%81%82%E3%81%84%E3%81%AE%E3%82%8A%20Asian%20Journey'
-        const hostname = 'vdegenne.github.io'
-        // const hostname = window.location.hostname
+        const hostname = window.location.hostname
         window.open(`https://github.com/${hostname.split('.')[0]}/JP-Subtitles/tree/master/${encodeURIComponent(item)}`, '_blank')
       }
     </script>
