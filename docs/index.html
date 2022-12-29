@@ -2,17 +2,21 @@
 <html>
   <head>
     <title>Japanese Subtitles List</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
   </head>
   <body>
     <style>
       body {
         margin: 0;
+        font-family: roboto;
       }
     </style>
     <list-container></list-container>
 
     <script type="module">
       import { LitElement, html, css } from 'https://unpkg.com/lit@2.5.0/index.js?module'
+      import 'https://unpkg.com/@material/mwc-icon-button@0.27.0/mwc-icon-button.js?module'
 
       window.customElements.define('list-container', class extends LitElement {
         static properties = {
@@ -20,17 +24,26 @@
         }
 
         static styles = css`
+        .item {
+          display: flex;
+          align-items:center;
+          /* padding: 12px; */
+          padding: 0 0 0 12px;
+        }
+        .item:hover {
+          background-color: #eee;
+        }
         a {
-          display: block;
-          color: #2196f3;
-          padding: 12px;
+          /* display: block; */
+          flex: 1;
+          color: black;
           text-decoration: none;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         a:visited {
           color: red;
-        }
-        a:hover {
-          background-color: #eee;
         }
         `
 
@@ -45,15 +58,35 @@
         render () {
           return html`
           ${this.list.map((item) => {
-            return html`<a href="${this.buildYouTubeUrl(item)}" target="_blank">${item}</a>`
+            return html`
+            <div class=item>
+              <a href="${buildYouTubeUrl(item)}" target="_blank">${item}</a>
+                <mwc-icon-button icon="smart_display" style="color:red" @click=${e => this.onYouTubeButtonClick(e)}></mwc-icon-button>
+                <mwc-icon-button icon="folder" @click=${() => goToFolder(item)}></mwc-icon-button>
+            </div>
+            `
           })}
           `
         }
 
-        buildYouTubeUrl (item) {
-          return `https://www.youtube.com/results?search_query=${encodeURIComponent(item)}`
+        onYouTubeButtonClick (e) {
+          const target = e.target;
+          target.previousElementSibling.click()
         }
+
       })
+
+
+      function buildYouTubeUrl (item) {
+        return `https://www.youtube.com/results?search_query=${encodeURIComponent(item)}&sp=EgIYAg%253D%253D`
+      }
+
+      function goToFolder (item) {
+        const link = 'https://github.com/vdegenne/JP-Subtitles/tree/master/Ainori%20Love%20Wagon%20Asian%20Journey%20-%20%E3%81%82%E3%81%84%E3%81%AE%E3%82%8A%20Asian%20Journey/%E3%81%82%E3%81%84%E3%81%AE%E3%82%8A%20Asian%20Journey'
+        const hostname = 'vdegenne.github.io'
+        // const hostname = window.location.hostname
+        window.open(`https://github.com/${hostname.split('.')[0]}/JP-Subtitles/tree/master/${encodeURIComponent(item)}`, '_blank')
+      }
     </script>
   </body>
 </html>
