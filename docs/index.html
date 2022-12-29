@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Japanese Subtitles List</title>
+  </head>
+  <body>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <list-container></list-container>
+
+    <script type="module">
+      import { LitElement, html, css } from 'https://unpkg.com/lit@2.5.0/index.js?module'
+
+      window.customElements.define('list-container', class extends LitElement {
+        static properties = {
+          list: {}
+        }
+
+        static styles = css`
+        a {
+          display: block;
+          color: #2196f3;
+          padding: 12px;
+          text-decoration: none;
+        }
+        a:visited {
+          color: red;
+        }
+        a:hover {
+          background-color: #eee;
+        }
+        `
+
+        constructor() {
+          super()
+          this.list = []
+          fetch('./files.json').then(async (response) => {
+            this.list = await response.json()
+          })
+        }
+
+        render () {
+          return html`
+          ${this.list.map((item) => {
+            return html`<a href="${this.buildYouTubeUrl(item)}" target="_blank">${item}</a>`
+          })}
+          `
+        }
+
+        buildYouTubeUrl (item) {
+          return `https://www.youtube.com/results?search_query=${encodeURIComponent(item)}`
+        }
+      })
+    </script>
+  </body>
+</html>
