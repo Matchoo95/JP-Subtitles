@@ -15,8 +15,12 @@
     <list-container></list-container>
 
     <script type="module">
-      import { LitElement, html, css } from 'https://unpkg.com/lit@2.5.0/index.js?module'
+      import { LitElement, html, css } from 'https://unpkg.com/lit@2.6.1/index.js?module'
+      import { createRef, ref } from 'https://unpkg.com/lit@2.6.1/directives/ref.js?module'
+      import 'https://unpkg.com/@lit-labs/virtualizer@1.0.1/lit-virtualizer.js?module'
       import 'https://unpkg.com/@material/mwc-icon-button@0.27.0/mwc-icon-button.js?module'
+      import 'https://unpkg.com/@material/mwc-dialog@0.27.0/mwc-dialog.js?module'
+      import 'https://unpkg.com/@material/mwc-button@0.27.0/mwc-button.js?module'
 
       window.customElements.define('list-container', class extends LitElement {
         static properties = {
@@ -29,11 +33,12 @@
           align-items:center;
           /* padding: 12px; */
           padding: 0 0 0 12px;
+          width: 100%;
         }
         .item:hover {
           background-color: #eee;
         }
-        a {
+        :not(mwc-dialog) a {
           /* display: block; */
           flex: 1;
           color: black;
@@ -57,15 +62,27 @@
 
         render () {
           return html`
-          ${this.list.map((item) => {
-            return html`
-            <div class=item>
-              <a href="${buildYouTubeUrl(item)}" target="_blank">${item}</a>
-                <mwc-icon-button icon="smart_display" style="color:red" @click=${e => this.onYouTubeButtonClick(e)}></mwc-icon-button>
-                <mwc-icon-button icon="folder" @click=${() => goToFolder(item)}></mwc-icon-button>
-            </div>
-            `
-          })}
+          <header style="direction:rtl;padding:4px;">
+            <mwc-button outlined @click=${() => { this.dialogRef.value.show() }}>Externals</mwc-button-icon>
+          </header>
+          <lit-virtualizer
+            .items=${this.list}
+            .renderItem=${item => html`
+              <div class=item>
+                <a href="${buildYouTubeUrl(item)}" target="_blank">${item}</a>
+                  <mwc-icon-button icon="smart_display" style="color:red" @click=${e => this.onYouTubeButtonClick(e)}></mwc-icon-button>
+                  <mwc-icon-button icon="folder" @click=${() => goToFolder(item)}></mwc-icon-button>
+              </div>
+            `}
+          ></lit-virtualizer>
+
+
+          <mwc-dialog ${ref(this.dialogRef = createRef())} heading="Other sites">
+            <a href="https://itazuraneko.neocities.org/library/sub">https://itazuraneko.neocities.org/library/sub</a>
+            <div style="height:12px;"></div>
+            <a href="https://kitsunekko.net/dirlist.php?dir=subtitles%2Fjapanese%2F">https://kitsunekko.net/dirlist.php?dir=subtitles%2Fjapanese%2F</a>
+            <mwc-button unelevated slot=primaryAction dialogAction=close>close</mwc-button>
+          </mwc-dialog>
           `
         }
 
