@@ -15,12 +15,13 @@
     <list-container></list-container>
 
     <script type="module">
-      import { LitElement, html, css } from 'https://unpkg.com/lit@2.6.1/index.js?module'
+      import { LitElement, html, css, nothing } from 'https://unpkg.com/lit@2.6.1/index.js?module'
       import { createRef, ref } from 'https://unpkg.com/lit@2.6.1/directives/ref.js?module'
       import 'https://unpkg.com/@lit-labs/virtualizer@1.0.1/lit-virtualizer.js?module'
       import 'https://unpkg.com/@material/mwc-icon-button@0.27.0/mwc-icon-button.js?module'
       import 'https://unpkg.com/@material/mwc-dialog@0.27.0/mwc-dialog.js?module'
       import 'https://unpkg.com/@material/mwc-button@0.27.0/mwc-button.js?module'
+      import 'https://unpkg.com/@material/mwc-textfield@0.27.0/mwc-textfield.js?module'
 
       window.customElements.define('list-container', class extends LitElement {
         static properties = {
@@ -61,12 +62,22 @@
         }
 
         render () {
+          let filteredList = this.list
+          if (this.inputRef?.value && this.inputRef.value.value != '') {
+            const searchRegexp = new RegExp(this.inputRef.value.value, 'i')
+            filteredList = this.list.filter((item) => item.match(searchRegexp))
+          }
           return html`
           <header style="direction:rtl;padding:4px;">
             <mwc-button outlined @click=${() => { this.dialogRef.value.show() }}>Externals</mwc-button-icon>
           </header>
+          <mwc-textfield ${ref(this.inputRef = createRef())}
+            type=search label=search style="width:100%;padding:12px;box-sizing:border-box"
+            @input=${() => this.requestUpdate()}
+          ></mwc-textfield>
+          ${filteredList.length == 0 ? html`<div style="padding:24px;">No results..</div>` : nothing}
           <lit-virtualizer
-            .items=${this.list}
+            .items=${filteredList}
             .renderItem=${item => html`
               <div class=item>
                 <a href="${buildYouTubeUrl(item)}" target="_blank">${item}</a>
